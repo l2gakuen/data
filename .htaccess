@@ -1,0 +1,82 @@
+Options +FollowSymlinks
+RewriteEngine On
+
+# ##--------  http://www to http://  ------------------------------
+# ##RewriteBase /
+# ##RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+# ##RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+
+##-------- FORCE HTTPS -----------------------------------------
+
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+ 
+# ##-------- EXCEPTION FOLDERS -----------------------------------
+# RewriteRule ^(manager|css)($|/) - [L]
+
+
+# ##--------  index.php?a=123 to 123 ------------------------------
+# RewriteRule ^([^/\.]+)/?$ index.php?mod=$1 [L,QSA]
+
+# ##-------- Hide .php from image.php (YAY!!!!!)
+# RewriteRule ^safeimage/([^/\.]+)/([0-9]+)/([0-9]+)/([0-9A-Za-z\\/_.\d-]+)$ /image.php?effect=$1&w=$2&h=$3&f=$4 [L]
+
+# ##--------  ROUTES
+
+# RewriteRule	^database/([0-9A-Za-z\\/_.\d-]+)$	include/autocomplete/$1
+# RewriteRule	^export/([0-9A-Za-z\\/_.\d-]+)$	    include/messagerie/export.php?id=$1
+# RewriteRule	^sitemap$	sitemap.xml [L]
+
+
+# <Files "*.kml">
+# Header set Content-Disposition attachment
+# </Files>
+
+# ## EXPIRES CACHING ##
+# <IfModule mod_expires.c>
+ 
+# # Fonts
+# # Add correct content-type for fonts
+# AddType application/vnd.ms-fontobject .eot 
+# AddType application/x-font-ttf .ttf
+# AddType application/x-font-opentype .otf
+# AddType application/x-font-woff .woff
+# AddType image/svg+xml .svg
+
+# # Compress compressible fonts
+# # only uncomment if you dont have compression turned on already. Otherwise it will cause all other filestypes not to get compressed
+# # AddOutputFilterByType DEFLATE application/x-font-ttf application/x-font-opentype image/svg+xml
+
+# ExpiresActive on
+
+# # Add a far future Expires header for fonts
+# ExpiresByType application/vnd.ms-fontobject "access plus 1 year"
+# ExpiresByType application/x-font-ttf "access plus 1 year"
+# ExpiresByType application/x-font-opentype "access plus 1 year"
+# ExpiresByType application/x-font-woff "access plus 1 year"
+# ExpiresByType application/font-woff2  "access plus 1 month"
+# ExpiresByType image/svg+xml "access plus 1 year"
+
+# ExpiresActive On
+# ExpiresByType image/jpg "access plus 1 year"
+# ExpiresByType image/jpeg "access plus 1 year"
+# ExpiresByType image/gif "access plus 1 year"
+# ExpiresByType image/png "access plus 1 year"
+# ExpiresByType text/css "access plus 1 month"
+# ExpiresByType application/pdf "access plus 1 month"
+# ExpiresByType text/x-javascript "access plus 1 month"
+# ExpiresByType application/x-shockwave-flash "access plus 1 month"
+# ExpiresByType image/x-icon "access plus 1 year"
+# ExpiresDefault "access plus 2 days"
+
+
+
+# </IfModule>
+# ## EXPIRES CACHING ##
+
+# ##<IfModule mod_rewrite.c>
+# ##RewriteEngine On
+# ##RewriteCond %{REQUEST_FILENAME} !-f
+# ##RewriteRule ^safeimage/([^/\.]+)$ /image.php?effect=$1 [L]
+# ##</IfModule>

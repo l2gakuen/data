@@ -1,0 +1,106 @@
+<div class="details">
+    <div id="main">
+        <div class="bordered">
+            <div class="search">
+                <label class="d-flex align-items-center">
+                    <input type="search" class="pl-5" data-search="#tbody" placeholder="Rechercher Etablissement" />
+                    <i class="fal fa-search"></i>
+                </label>
+            </div>
+            <div>
+                <table>
+                    <thead>
+                        <tr class="text-left">
+                            <th class="px-2">#ID</th>
+                            <th class="px-2">Reférence</th>
+                            <th class="px-2">Nom Etablissement</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody">
+                        <tr data-result>
+                            <td class="pl-3 small">
+                                <a href="#" data-push="#checkbar, .modals">
+                                    -
+                                </a>
+                            </td>
+                            <td class="small">
+                                <a href="#" data-push="#checkbar, .modals">
+                                    -
+                                </a> 
+                            </td>
+                            <td class="text-left">
+                                <a href="#" data-push="#checkbar, .modals">
+                                    -
+                                </a>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div id="side">
+        <label for="toggleSide"></label>
+        <div class="pt-3 overflow-y-auto">
+            <div class="box p-3 user d-none">
+                <div class="grid sectionmodals" style="--minRangeValue: 50px">
+                </div>
+            </div>
+            <div class="box p-3">
+                <div class="row justify-content-between">
+                    <div class="col-auto">
+                        <form method="POST" data-push="#checkbar, .modals">
+                            <input type="hidden" name="action" value="new">
+                            <input type="submit" class="button" value="Ajouter un Etablissement">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modals">
+    <div class="modal">
+        <input type="checkbox" id="toggle-modal1" class="toggle-modal d-none" />
+        <div class="modal-box ">
+            <label for="toggle-modal1" class="close"></label>
+            <div class="modal-content align-items-lg-center">
+                <div class="container">
+                    <div style="position: sticky; top:0" class="d-none d-xxl-block">
+                        <h1>Etablissement</h1>
+                        <h2 class="mb-2">Ajouter</h2>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <form method="POST" id="profilform" data-push="#tbody, #checkbar">
+                                <div class="row align-items-center d-none">
+                                    <div class="col">
+                                        <h3 class="text-6 mb-3">
+                                            <span>Ajouter </span>
+                                            <span>un établissement </span>
+                                        </h3>
+                                    </div>
+                                    <div class="col-auto">123</div>
+                                </div>
+                                <div class="pl-2 pr-2 mb-3">
+                                    <div>
+                                        <label for="lycee_ref">Référence</label>
+                                        <input type="text" id="lycee_ref" name="lycee_ref" placeholder="" required />
+                                    </div>
+                                    <div>
+                                        <label for="lycee_nom">Nom Etablissement</label>
+                                        <textarea name="lycee_nom" id="lycee_nom" cols="30" rows="10" required></textarea>
+                                    </div>
+                                </div>
+                                <input type="hidden" name="uid" />
+                                <input type="hidden" name="action" value="addLycee" />
+                                <p class="text-right">
+                                    <input type="submit" class="btn mb-3" value=" Sauvegarder Etablissement" />
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
